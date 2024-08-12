@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const blogPosts = {
   1: {
@@ -30,11 +31,14 @@ const BlogPost = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Link to="/" className="flex items-center text-blue-500 hover:underline mb-4">
-        <ArrowLeft className="mr-2" size={20} />
-        Back to Home
-      </Link>
-      <article className="prose lg:prose-xl mx-auto">
+      <div className="flex justify-between items-center mb-8">
+        <Link to="/" className="flex items-center text-blue-500 hover:underline">
+          <ArrowLeft className="mr-2" size={20} />
+          Back to Home
+        </Link>
+        <ThemeToggle />
+      </div>
+      <article className="prose lg:prose-xl mx-auto dark:prose-invert">
         <h1>{post.title}</h1>
         <p className="text-gray-500">{post.date}</p>
         <div className="mt-4">
