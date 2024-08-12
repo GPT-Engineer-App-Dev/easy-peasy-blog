@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -12,17 +12,21 @@ const blogPosts = [
 ];
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleNewPost = () => {
+    navigate('/new');
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-bold">My Personal Blog</h1>
         <div className="flex items-center space-x-4">
-          <Link to="/new">
-            <Button variant="outline">
-              <PenTool className="mr-2 h-4 w-4" />
-              New Post
-            </Button>
-          </Link>
+          <Button variant="outline" onClick={handleNewPost}>
+            <PenTool className="mr-2 h-4 w-4" />
+            New Post
+          </Button>
           <ThemeToggle />
         </div>
       </div>
